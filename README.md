@@ -97,15 +97,15 @@ but can be launched from any distro.
 
 Step by step:
 
-- install docker (see http://docs.docker.io/installation)
-- pull the premade image
+1. install docker (see http://docs.docker.io/installation)
+2. pull the premade image
   - `docker pull mose/linuxfr-dev`
-- or if you already know docker make your own with the `Dockerfile` present in the repo
+3. or if you already know docker make your own with the `Dockerfile` present in the repo
   - `docker build -t linuxfr .`
-- remove `database.yml` if you already customised it, as it will use the default one
-- launch the container either manually
+4. remove `database.yml` if you already customised it, as it will use the default one
+5. launch the container either manually
   - `docker run -d -v /path/to/linuxfr-cloned-repo:/srv/linuxfr --name linuxfr mose/linuxfr-dev`
-- or use the small bash script
+6. or use the small bash script
   - `./docker-files/docker.sh` it will
     - create a user with same uid as you so the mounted repo will have no prem trouble
     - copy your ssh public keys in the container root and user account `authorized_keys`
@@ -113,11 +113,11 @@ Step by step:
       (note later on if you are on the same ARCH as the container (ie 64bits) you can bundle install from your local repo)
     - propose you to refresh or not the db
     - add in your /etc/hosts an entry for the container ip to resolve to linuxfr.dev
-- you can access the launched app
+7. you can access the launched app
   - `x-www-browser http://172.17.0.2:3000` reach the app in your browser
   - `mysql -h 172.17.0.2 -ulinuxfr.dev linuxfr_rails` to access the db
   - `ssh root@172.17.0.2` and password `docker` to reach it via ssh
-- you will have to do the step 7 from the normal install for init the admin account.
+8. you will have to do the step 7 from the normal install for init the admin account.
 
 Usage:
 
