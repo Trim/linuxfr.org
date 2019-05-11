@@ -16,6 +16,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  submitted_at :datetime
+#  banner       :string(255)
 #
 
 #
@@ -58,6 +59,10 @@ class News < Content
                            length: { maximum: 32, message: "Le nom de l'auteur est trop long" }
   validates :author_email, presence: { message: "Veuillez entrer votre adresse de courriel" },
                            length: { maximum: 64, message: "L'adresse email de l'auteur est trop longue" }
+
+### Banner ###
+
+  mount_uploader :banner, NewsBannerUploader
 
 ### SEO ###
 
