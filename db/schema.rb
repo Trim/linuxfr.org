@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_214500) do
+ActiveRecord::Schema.define(version: 2019_05_26_160940) do
 
   create_table "accounts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(version: 2019_05_20_214500) do
     t.text "second_part", limit: 4294967295
     t.text "links", limit: 16777215
     t.datetime "created_at"
+    t.string "banner"
     t.index ["created_at"], name: "index_news_versions_on_created_at"
     t.index ["news_id", "user_id"], name: "index_news_versions_on_news_id_and_user_id"
     t.index ["news_id", "version"], name: "index_news_versions_on_news_id_and_version"

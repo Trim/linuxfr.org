@@ -12,6 +12,7 @@
 #  second_part :text(4294967295)
 #  links       :text(16777215)
 #  created_at  :datetime
+#  banner      :string(255)
 #
 
 #
