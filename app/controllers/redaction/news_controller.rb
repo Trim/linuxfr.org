@@ -47,6 +47,16 @@ class Redaction::NewsController < RedactionController
     render partial: 'short'
   end
 
+  def edit_banner
+    render partial: 'banner_form'
+  end
+
+  def update_banner
+    @news.attributes = news_params
+    @news.save
+    render partial: 'banner'
+  end
+
   def reassign
     enforce_reassign_permission(@news)
     @news.reassign_to params[:user_id], current_user.name
@@ -105,7 +115,7 @@ class Redaction::NewsController < RedactionController
 protected
 
   def news_params
-    params.require(:news).permit(:title, :section_id, :wiki_body, :wiki_second_part,
+    params.require(:news).permit(:banner, :title, :section_id, :wiki_body, :wiki_second_part,
                                  links_attributes: [Link::Accessible])
   end
 

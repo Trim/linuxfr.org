@@ -127,6 +127,8 @@ Rails.application.routes.draw do
       collection { get :moderation }
       member do
         get "/revisions/:revision" => :revision, as: :revision
+        get :edit_banner
+        patch :update_banner
         post :submit
         post :followup
         post :erase

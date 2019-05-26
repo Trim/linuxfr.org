@@ -1,0 +1,10 @@
+= form_for [@news], url: update_banner_redaction_news_path(@news) do |form|
+  - if @news.banner?
+    %img{src: @news.banner.url}
+  - else
+    %img{src: NewsBannerUploader::DEFAULT_BANNER_URL}
+  %p
+    = form.label :banner, 'Image:'
+    = form.file_field :banner, accept: "image/*"
+  %button.cancel(type="button") Annuler
+  = form.submit "OK"
