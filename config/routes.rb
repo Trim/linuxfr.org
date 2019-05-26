@@ -128,7 +128,7 @@ Rails.application.routes.draw do
       member do
         get "/revisions/:revision" => :revision, as: :revision
         get :edit_banner
-        patch :update_banner
+        post :update_banner
         post :submit
         post :followup
         post :erase
