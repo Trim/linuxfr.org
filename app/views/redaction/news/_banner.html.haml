@@ -1,6 +1,7 @@
-.paragraph{"data-url" => edit_banner_redaction_news_path(@news)}
+.edition_in_place{"data-url" => edit_banner_redaction_news_path(@news)}
   - if @news.banner?
     %img{src: @news.banner.url}
   - else
     %img{src: NewsBannerUploader::DEFAULT_BANNER_URL}
-  %button.edit Modifier
+  .action
+    %button.edit Modifier
