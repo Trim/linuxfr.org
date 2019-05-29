@@ -40,6 +40,10 @@ class Redaction::NewsController < RedactionController
     render partial: 'form'
   end
 
+  def edit_banner
+    render partial: 'banner_form'
+  end
+
   def update
     @news.attributes = news_params
     @news.editor = current_account
@@ -47,17 +51,11 @@ class Redaction::NewsController < RedactionController
     render partial: 'short'
   end
 
-  def edit_banner
-    @news = News.draft.find(params[:id])
-    render partial: 'banner_form'
-  end
-
   def update_banner
     params.require(:news).require(:banner)
-    news = News.draft.find(params[:id])
-    news.banner = params[:news][:banner]
-    news.editor = current_account
-    news.save
+    @news.banner = params[:news][:banner]
+    @news.editor = current_account
+    @news.save
     render partial: 'banner'
   end
 
