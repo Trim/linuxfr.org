@@ -7,9 +7,15 @@
   - c.body  = capture do
     = news.body
     - if news.figure_image?
+      - if defined?(with_second_part) and with_second_part
+        - srcset = news.figure_image.srcset
+      - elsif defined?(on_ppp) and on_ppp
+        - srcset = news.figure_image.srcset("starred")
+      - else
+        - srcset = news.figure_image.srcset("thumb")
       .news-figure
         %figure
-          %img{src: news.figure_image.url, alt: "#{news.figure_alternative}", srcset: news.figure_image.srcset}
+          %img{src: news.figure_image.url, alt: "#{news.figure_alternative}", srcset: srcset}
           %figcaption #{news.figure_caption}
     - if defined?(with_second_part) && with_second_part
       = news.second_part
