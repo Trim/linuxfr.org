@@ -134,7 +134,8 @@ body#redaction-index {
   padding-top: 20px;
   display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: space-evenly;
   #topbar {
@@ -211,9 +212,10 @@ body#redaction-index {
     margin-left: 15px;
     padding-left: 3px;
     padding-right: 3px;
-    flex-basis: 40%;
+    flex-basis: 50%;
     flex-grow: 1;
-    max-width: 55%;
+    flex-shrink: 0;
+    max-width: 95%;
     p {
       margin: 0 0 5px;
       padding: 5px;
@@ -263,34 +265,44 @@ body#redaction-index {
   }
   #metadata,
   #toolpanel {
-    width: 20%;
     padding-left: 3px;
     padding-right: 3px;
     background: transparent;
     border: none;
     font-size: 0.8em;
-    > h1,
-    #news_vote h1 {
-      font-size: 1.5em;
-      line-height: 1.3em;
-      font-weight: normal;
-      background: no-repeat 0px 1.65rem / 2rem transparent;
-      background-image: url("/images/icones/underline.png");
-      background-image: url("/images/icones/underline.svg"), none;
-      padding-bottom: 5px;
-    }
-    #second_part_toc h2 {
-      display: none;
+    max-width: 20%;
+    details {
+      summary {
+        font-size: large;
+        cursor: pointer;
+        border-bottom: 1px solid black;
+        padding: 0.2em;
+        line-height: 2;
+      }
+      &:not([open]) {
+        summary {
+          writing-mode: vertical-rl;
+          margin-right: 1.5em; // Chrome doesn't need it, but Firefox yes
+          border-bottom: none;
+          border-left: 1px solid black;
+        }
+      }
+      > h1,
+      #news_vote h1 {
+        font-size: 1.5em;
+        line-height: 1.3em;
+        font-weight: normal;
+        background: no-repeat 0px 1.65rem / 2rem transparent;
+        background-image: url("/images/icones/underline.png");
+        background-image: url("/images/icones/underline.svg"), none;
+        padding-bottom: 5px;
+      }
+      h2.sommaire {
+        display: none;
+      }
     }
     ul {
       padding-left: 2em;
-    }
-    details {
-      margin: 1em 0;
-    }
-    summary {
-      font-size: 1.2em;
-      font-weight: bold;
     }
     #news_statistics {
       display: -ms-flexbox;

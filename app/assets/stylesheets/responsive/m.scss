@@ -164,10 +164,13 @@
   }
 
   #redaction {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     padding-top: 0px;
     #metadata,
     #toolpanel {
       flex-grow: 1;
+      max-width: 45%;
     }
     #edition {
       flex-basis: 100%;
@@ -180,7 +183,6 @@
       order: 1;
     }
     #toolpanel {
-      margin: 3px;
       order: 2;
     }
     #topbar {
