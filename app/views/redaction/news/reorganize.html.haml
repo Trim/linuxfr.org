@@ -19,6 +19,9 @@
     %p
       = form.label :wiki_body, "Chapeau"
       = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp'
+    %p
+      = form.label :wiki_second_part, "Contenu de la dépêche"
+      = form.text_area :wiki_second_part, spellcheck: 'true', class: 'markItUp'
     #form_links
       %fieldset
         %label#label-link-name Nom du lien
@@ -30,9 +33,6 @@
           = lform.text_field :title
           = lform.url_field :url
           = lform.select :lang, Lang.all
-    %p
-      = form.label :wiki_second_part, "Contenu de la dépêche"
-      = form.text_area :wiki_second_part, spellcheck: 'true', class: 'markItUp'
     %p
       = form.submit "OK"
 
