@@ -1,7 +1,7 @@
 # encoding: utf-8
 module NodeHelper
 
-  ContentPresenter = Struct.new(:record, :title, :meta, :tags, :notice, :image, :body, :actions, :css_class, :hidden) do
+  ContentPresenter = Struct.new(:record, :title, :meta, :tags, :notice, :image, :figure, :body, :actions, :css_class, :hidden) do
     def to_hash
       attrs = members.map(&:to_sym)
       Hash[*attrs.zip(values).flatten(1)]

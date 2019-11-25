@@ -28,6 +28,41 @@ body#wiki_pages-changes #contents {
   font-size: 1em;
 }
 
+body#home-index,
+body#news-index {
+  article {
+    .wrapper {
+      display: -ms-flexbox;
+      display: flex;
+      .news-figure figure {
+        width: 168px;
+        background-color: transparent;
+        margin-left: 2em;
+        img {
+          width: 100%;
+          max-height: none;
+        }
+        figcaption {
+          display: none;
+        }
+      }
+      div {
+        -ms-flex: 0 1 auto;
+        flex: 1 1 auto;
+      }
+    }
+    &.ppp .wrapper {
+      -ms-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+      .news-figure figure {
+        width: 100%;
+        margin-left: auto;
+        max-height: none;
+      }
+    }
+  }
+}
+
 article {
   position: relative;
   header {
