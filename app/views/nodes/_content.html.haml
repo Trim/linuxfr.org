@@ -43,23 +43,22 @@
                 - if current_account && current_account.can_tag?(record)
                   .tag_in_place{"data-url" => "/nodes/#{record.node.id}/tags/nouveau"}
                     = link_to "Tagger", "/nodes/#{record.node.id}/tags/nouveau", class: 'action'
-    .wrapper
-      .figures
-        %meta{itemprop: "interactionCount", content: "UserLikes:#{record.score}"}
-        %figure.score(title="Note de ce contenu")= record.score
-        %figure.datePourCss= date_pour_css(record)
-        - if image and !hidden
-          %figure.image(itemprop="image")= image
-      - if hidden
-        .content.hidden &nbsp;
-      - else
-        .content(itemprop="articleBody" class="entry-content")
-          %div
-            - if notice
-              .notice= notice
-            = body
+    .figures
+      %meta{itemprop: "interactionCount", content: "UserLikes:#{record.score}"}
+      %figure.score(title="Note de ce contenu")= record.score
+      %figure.datePourCss= date_pour_css(record)
+      - if image and !hidden
+        %figure.image(itemprop="image")= image
+    - if hidden
+      .content.hidden &nbsp;
+    - else
+      .content(itemprop="articleBody" class="entry-content")
         - unless record.node.on_ppp?
           = figure
+        %div
+          - if notice
+            .notice= notice
+          = body
     %footer.actions
       = read_it(record)
       = actions
