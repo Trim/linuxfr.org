@@ -1,5 +1,9 @@
 html#home {
   body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
     header {
       nav#home-site {
         display: flex;
@@ -12,15 +16,6 @@ html#home {
 
         > * {
           margin: 0 10px;
-        }
-
-        a:not(:hover) {
-          border-bottom-color: transparent;
-        }
-
-        .active, a {
-          border-top: solid 5px transparent;
-          border-bottom: solid 5px white;
         }
 
         #logo {
@@ -56,10 +51,8 @@ html#home {
 
         #links {
           display: flex;
-          flex: 1 1 auto;
           align-content: stretch;
-          justify-content: space-evenly;
-          max-width: 50%;
+          justify-content: space-around;
 
           font-size: 1.1rem;
 
@@ -88,14 +81,62 @@ html#home {
             background-color: white;
           }
         }
+      }
+    }
 
-        a {
-          display: flex;
-          align-items: center;
+    main {
+      flex: 1 1 auto;
+    }
+
+    header, footer {
+      .active, a {
+        border-top: solid 5px transparent;
+        border-bottom: solid 5px white;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        white-space: nowrap;
+
+        &:hover {
+          text-decoration: none;
         }
 
-        a:hover {
-          text-decoration: none;
+        &:not(:hover) {
+          border-bottom-color: transparent;
+        }
+      }
+    }
+
+    footer {
+      nav {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        color: white;
+        background-color: $C_HOME_FOOTER;
+
+        #footer-logo {
+          display: flex;
+          justify-content: center;
+
+          img {
+            padding-top: 5px;
+            height: 4rem;
+            margin: 0 10px;
+          }
+        }
+
+        >div {
+          display: flex;
+          align-content: stretch;
+          justify-content: space-around;
         }
       }
     }

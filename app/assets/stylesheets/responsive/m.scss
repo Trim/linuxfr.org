@@ -320,16 +320,28 @@
       header {
         nav#home-site {
           padding-top: 5px;
+        }
+      }
+
+      header, footer {
+        nav, nav#home-site {
           justify-content: center;
 
           >* {
             margin: 5px 0;
           }
 
-          #links {
+          >div, #links, #footer-logo {
             flex-wrap: wrap;
+          }
+
+          #links, #footer-logo {
             width: 100%;
             max-width: unset;
+            img {
+              padding-top: 0;
+              max-height: 10vh;
+            }
           }
         }
       }
