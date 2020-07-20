@@ -1,35 +1,38 @@
 html {
+  font-family: "Lato", sans-serif;
+}
+
+html:not(#home) {
   background: $C_BAS_FOND;
   background-image: url("/images/contrib/RonRonnement/background_html.png");
   background-repeat: repeat-x;
   background-position: top;
-  font-family: "Lato", sans-serif;
   padding: 0 $PX_MARGE_DROITE 0 $PX_MARGE_GAUCHE;
   scroll-behavior: smooth;
   box-sizing: border-box;
+
+  body {
+    position: relative;
+    color: #000;
+    max-width: $BODY_MAX_WIDTH;
+    margin: 0 auto;
+    border: solid #999;
+    border-width: 0 1px;
+    background: linear-gradient(
+        90deg,
+        $C_CLAIR,
+        $C_CLAIR $PX_BRANDING_LARG,
+        $C_CONTAINER $PX_BRANDING_LARG,
+        $C_CONTAINER
+      )
+      #fff;
+  }
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
-}
-
-body {
-  position: relative;
-  color: #000;
-  max-width: $BODY_MAX_WIDTH;
-  margin: 0 auto;
-  border: solid #999;
-  border-width: 0 1px;
-  background: linear-gradient(
-      90deg,
-      $C_CLAIR,
-      $C_CLAIR $PX_BRANDING_LARG,
-      $C_CONTAINER $PX_BRANDING_LARG,
-      $C_CONTAINER
-    )
-    #fff;
 }
 
 a {

@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+%html#home(lang="fr")
+  = render 'layouts/head'
+  %body{body_attr}
+    = render 'site'
+    %section
+      = yield :layout
+    = javascript_include_tag "application"
