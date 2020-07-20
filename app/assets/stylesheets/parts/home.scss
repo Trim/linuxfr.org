@@ -1,96 +1,102 @@
 html#home {
   body {
-    nav#home-site {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: stretch;
-      justify-content: space-between;
-
-      background: $C_HOME_BANDEAU;
-      color: white;
-
-      > * {
-        margin: 0 10px;
-      }
-
-      a:not(:hover) {
-        border-bottom-color: transparent;
-      }
-
-      .active, a {
-        border-top: solid 5px transparent;
-        border-bottom: solid 5px white;
-      }
-
-      #logo {
+    header {
+      nav#home-site {
         display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-between;
 
-        img {
-          max-height: 3rem;
-          margin-right: 10px;
-          margin-top: 2px;
+        background: $C_HOME_HEADER;
+        color: white;
+
+        > * {
+          margin: 0 10px;
         }
 
-        #site-name {
+        a:not(:hover) {
+          border-bottom-color: transparent;
+        }
+
+        .active, a {
+          border-top: solid 5px transparent;
+          border-bottom: solid 5px white;
+        }
+
+        #logo {
           display: flex;
-          flex-direction: column;
-          justify-content: center;
+          border: unset;
 
-          font-family: "Merriweather";
-          font-weight: bolder;
-
-          #head-site-name {
-            font-size: 1.2rem;
+          img {
+            max-height: 3rem;
+            margin-right: 10px;
+            margin-top: 2px;
           }
 
-          #tld-site-name {
-            font-size: 0.8rem;
+          #site-name {
+            padding-right: 10px;
+            align-self: stretch;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            font-family: "Merriweather";
+            font-weight: bolder;
+
+            #head-site-name {
+              font-size: 1.2rem;
+            }
+
+            #tld-site-name {
+              font-size: 0.8rem;
+            }
           }
         }
-      }
 
-      #links {
-        display: flex;
-        flex: 1 1 auto;
-        align-content: stretch;
-        justify-content: space-evenly;
-        max-width: 50%;
+        #links {
+          display: flex;
+          flex: 1 1 auto;
+          align-content: stretch;
+          justify-content: space-evenly;
+          max-width: 50%;
 
-        font-size: 1.1rem;
+          font-size: 1.1rem;
 
-        #site-links-search-glass img {
-          width: 1.4rem;
-          max-width: unset;
-          max-height: unset;
+          #site-links-search-glass img {
+            width: 1.4rem;
+            max-width: unset;
+            max-height: unset;
+          }
         }
-      }
 
-      #sign-about {
-        font-size: 0.8rem;
-        color: black;
-        display: flex;
-        align-content: stretch;
+        #sign-about {
+          font-size: 0.8rem;
+          color: black;
+          display: flex;
+          align-content: stretch;
 
-        #site-about {
-          align-self: center;
+          #site-about {
+            align-self: center;
 
-          padding: 0.6rem;
-          margin-left: 10px;
+            padding: 0.6rem;
+            margin-left: 10px;
 
-          border: solid 1px black;
-          border-radius: 1rem;
+            border: solid 1px black;
+            border-radius: 1rem;
 
-          background-color: white;
+            background-color: white;
+          }
         }
-      }
 
-      a {
-        display: flex;
-        align-items: center;
-      }
+        a {
+          display: flex;
+          align-items: center;
+        }
 
-      a:hover {
-        text-decoration: none;
+        a:hover {
+          text-decoration: none;
+        }
       }
     }
 

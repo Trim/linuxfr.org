@@ -317,18 +317,20 @@
 
   html#home {
     body {
-      nav#home-site {
-        padding-top: 5px;
-        justify-content: center;
+      header {
+        nav#home-site {
+          padding-top: 5px;
+          justify-content: center;
 
-        >* {
-          margin: 5px 0;
-        }
+          >* {
+            margin: 5px 0;
+          }
 
-        #links {
-          flex-wrap: wrap;
-          width: 100%;
-          max-width: unset;
+          #links {
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: unset;
+          }
         }
       }
     }

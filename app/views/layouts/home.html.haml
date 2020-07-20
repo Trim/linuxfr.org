@@ -2,7 +2,7 @@
 %html#home(lang="fr")
   = render 'layouts/head'
   %body{body_attr}
-    = render 'site'
-    %section
+    = render 'header'
+    %main
       = yield :layout
     = javascript_include_tag "application"
