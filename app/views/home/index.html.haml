@@ -1,1 +1,38 @@
-Hello world !
+%div
+	%section
+		%h1
+			= link_to "Actualités", '/news', title: "Toutes les actualités"
+		= render :partial => 'news/short', :collection => @news.map(&:content)
+		= link_to "Plus d'actualités", '/news', title: "Toutes les actualités", :class => "button light center"
+	%section
+		%p BANDEAU
+	%section
+		%h1
+			= link_to "Derniers billets de la communauté", '/journaux', title: "Tous les billets de la communauté"
+		%p  blah blah blah
+		= link_to "Plus de billets", '/journaux', title: "Tous les billets de la communauté", :class => "button light center"
+	%section
+		%h1 Faites vivre LinuxFr.org !
+		%div.center
+			= link_to "Participez", '/redaction', title: "Participez à la rédaction des dépêches", :class => "button dark"
+			= link_to "En savoir plus", '/a-propos', :class => 'button light'
+
+%sidebar
+	%section
+		%h1
+			= link_to "Sur le forum", '/forums', title: "Questions‑réponses, petites annonces"
+		%p
+			blah blah blah
+	%section
+		%h1 Sondage
+		%p blah blah blah
+	%section
+		%h1
+			= link_to "Liens remarquables", '/liens', title: "Liens remarquables"
+		%p
+			blah
+	%section
+		%h1
+			= link_to "Sur le wiki", '/wiki', title: "Pages wiki"
+		%p
+			blah blah blah

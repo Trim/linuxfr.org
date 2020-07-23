@@ -40,6 +40,16 @@ module NodeHelper
     render 'nodes/content', cp.to_hash
   end
 
+  def short_article_for(record)
+    cp = ContentPresenter.new
+    cp.record = record
+    cp.hidden = ContentPresenter.collection? && record.score < 0
+    score = [ [record.node.score / 5, -10].max, 10].min
+    yield cp
+    cp.meta ||= posted_by(record)
+    render 'nodes/short_content', cp.to_hash
+  end
+
   def tags_for(node)
     if current_user
       his_tags = current_user.taggings.

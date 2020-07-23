@@ -2,6 +2,7 @@ html#home {
   body {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     min-height: 100vh;
 
     header {
@@ -85,7 +86,41 @@ html#home {
     }
 
     main {
-      flex: 1 1 auto;
+      flex-grow: 1;
+
+      display: flex;
+      align-self: center;
+      width: 100%;
+      max-width: 110ex;
+
+      section {
+        flex-grow: 1;
+        margin-right: 10px;
+      }
+
+      sidebar {
+        width: 30ex;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+        padding-bottom: 0.3rem;
+        background: no-repeat 0px 1.5rem / 3ex transparent;
+        background-image: url(/images/icones/underline_yellow.png);
+        background-image: url(/images/icones/underline_yellow.svg);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: normal;
+        a {
+          font-weight: normal;
+        }
+      }
     }
 
     header, footer {
