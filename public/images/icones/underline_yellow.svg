@@ -50,7 +50,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="64"
-     inkscape:cx="-4.3671875"
+     inkscape:cx="-4.40625"
      inkscape:cy="1.5754821"
      inkscape:window-x="33"
      inkscape:window-y="0"
@@ -61,5 +61,7 @@
      id="path2"
      inkscape:connector-curvature="0"
      style="fill:#ffc73f;stroke-width:0.93332553;fill-opacity:1"
-     sodipodi:nodetypes="ccccc" />
+     sodipodi:nodetypes="ccccc"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
 </svg>

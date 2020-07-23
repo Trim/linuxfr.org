@@ -1,23 +1,23 @@
-%div
+%main
 	%section
 		%h1
 			= link_to "Actualités", '/news', title: "Toutes les actualités"
 		= render :partial => 'news/short', :collection => @news.map(&:content)
-		= link_to "Plus d'actualités", '/news', title: "Toutes les actualités", :class => "button light center"
+		= link_to "Plus d'actualités", '/news', title: "Toutes les actualités", :class => "button center"
 	%section
 		%p BANDEAU
 	%section
 		%h1
 			= link_to "Derniers billets de la communauté", '/journaux', title: "Tous les billets de la communauté"
 		%p  blah blah blah
-		= link_to "Plus de billets", '/journaux', title: "Tous les billets de la communauté", :class => "button light center"
+		= link_to "Plus de billets", '/journaux', title: "Tous les billets de la communauté", :class => "button center"
 	%section
 		%h1 Faites vivre LinuxFr.org !
-		%div.center
+		%div.center-content
 			= link_to "Participez", '/redaction', title: "Participez à la rédaction des dépêches", :class => "button dark"
-			= link_to "En savoir plus", '/a-propos', :class => 'button light'
+			= link_to "En savoir plus", '/a-propos', :class => 'button'
 
-%sidebar
+%aside
 	%section
 		%h1
 			= link_to "Sur le forum", '/forums', title: "Questions‑réponses, petites annonces"

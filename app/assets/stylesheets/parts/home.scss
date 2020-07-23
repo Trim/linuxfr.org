@@ -5,7 +5,8 @@ html#home {
     justify-content: space-around;
     min-height: 100vh;
 
-    header {
+    >header {
+      margin-bottom: 1rem;
       nav#home-site {
         display: flex;
         flex-wrap: wrap;
@@ -85,21 +86,52 @@ html#home {
       }
     }
 
-    main {
+    .button {
+      display: inline-block;
+      min-width: 30ex;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 1rem;
+      color: $C_HOME_HEADER;
+      border: solid 1px $C_HOME_HEADER;
+
+      &.dark {
+        color: white;
+        background: $C_HOME_HEADER;
+      }
+
+      &.center {
+        width: 30ex;
+      }
+    }
+
+    .center {
+      display: block;
+      margin: auto;
+    }
+
+    .center-content {
+      display: flex;
+      justify-content: space-around;
+      justify-content: space-evenly;
+    }
+
+    #main-container {
       flex-grow: 1;
+      align-self: center;
 
       display: flex;
-      align-self: center;
+      justify-content: space-between;
       width: 100%;
-      max-width: 110ex;
+      max-width: 115ex;
 
-      section {
-        flex-grow: 1;
+      main {
+        width: 75%;
         margin-right: 10px;
       }
 
-      sidebar {
-        width: 30ex;
+      aside {
+        width: 22%;
       }
 
       h1 {
@@ -123,7 +155,7 @@ html#home {
       }
     }
 
-    header, footer {
+    >header, >footer {
       .active, a {
         border-top: solid 5px transparent;
         border-bottom: solid 5px white;
@@ -147,7 +179,8 @@ html#home {
       }
     }
 
-    footer {
+    >footer {
+      margin-top: 1rem;
       nav {
         display: flex;
         align-items: stretch;
