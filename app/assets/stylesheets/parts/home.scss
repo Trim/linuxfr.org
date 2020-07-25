@@ -18,6 +18,7 @@ html#home {
 
         > * {
           margin: 0 10px;
+          min-height: 3rem;
         }
 
         #logo {
@@ -88,8 +89,8 @@ html#home {
 
     .button {
       display: inline-block;
-      min-width: 30ex;
       text-align: center;
+      min-width: 20ex;
       padding: 0.7rem;
       border-radius: 1rem;
       color: $C_HOME_HEADER;
@@ -101,7 +102,7 @@ html#home {
       }
 
       &.center {
-        width: 30ex;
+        width: 20ex;
       }
     }
 
@@ -112,7 +113,6 @@ html#home {
 
     .center-content {
       display: flex;
-      justify-content: space-around;
       justify-content: space-evenly;
     }
 
@@ -134,7 +134,12 @@ html#home {
         width: 22%;
       }
 
-      h1 {
+      article h1 {
+        color: $C_HOME_FOOTER;
+        font-size: 1.2rem;
+      }
+
+      section >h1 {
         font-size: 1.2rem;
         padding-bottom: 0.3rem;
         background: no-repeat 0px 1.5rem / 3ex transparent;

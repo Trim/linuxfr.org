@@ -323,13 +323,17 @@
         }
       }
 
+      #main-container {
+        flex-wrap: wrap;
+        max-width: 90%;
+
+        main, aside {
+          width: 100%;
+        }
+      }
+
       header, footer {
         nav, nav#home-site {
-          justify-content: center;
-
-          >* {
-            margin: 5px 0;
-          }
 
           >div, #links, #footer-logo {
             flex-wrap: wrap;
@@ -344,6 +348,14 @@
             }
           }
         }
+      }
+
+      .button {
+        margin-bottom: 5px;
+      }
+
+      .center-content {
+        flex-wrap: wrap;
       }
     }
   }
