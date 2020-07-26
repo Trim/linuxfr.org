@@ -9,7 +9,7 @@
 	%section
 		%h1
 			= link_to "Derniers billets de la communauté", '/journaux', title: "Tous les billets de la communauté"
-		%p  blah blah blah
+		= render :partial => 'diaries/short', :collection => @diaries.map(&:content)
 		= link_to "Plus de billets", '/journaux', title: "Tous les billets de la communauté", :class => "button center"
 	%section
 		%h1 Faites vivre LinuxFr.org !
