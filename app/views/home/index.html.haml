@@ -4,8 +4,8 @@
 			= link_to "Actualités", '/news', title: "Toutes les actualités"
 		= render :partial => 'news/short', :collection => @news.map(&:content)
 		= link_to "Plus d'actualités", '/news', title: "Toutes les actualités", :class => "button center"
-	%section
-		%p BANDEAU
+	%section#banner
+		= @banner
 	%section
 		%h1
 			= link_to "Derniers billets de la communauté", '/journaux', title: "Tous les billets de la communauté"

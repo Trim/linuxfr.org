@@ -1,278 +1,300 @@
 /* contenu du site (hors commentaire) */
-article,
-ul.threads > li.comment,
-.markdown_cheatsheet,
-#contents > form,
-form#new_post,
-body#users-comments #contents > ul > li,
-body#comments-create #contents > ul > li#comment_new,
-body#comments-update #contents > ul > li#comment_new,
-body#comments-show #contents > ul > li.comment,
-body#wiki_pages-revision #contents,
-body#news-revision #contents,
-body#boards-show #contents,
-body#stylesheets-edit #contents,
-body#wiki_pages-changes #contents,
-body#admin-index #container > ul {
-  display: block;
-  background: white;
-  padding: 10px $PX_PAD_NODE 10px $PX_PAD_NODE;
-  border-radius: $RAY_NODE;
-  border: solid $BORDER_CONTENT $C_INTER;
-  margin-bottom: 15px;
-  font-size: 0.8em;
-}
 
-body#news-revision #contents,
-body#wiki_pages-changes #contents {
-  font-size: 1em;
-}
-
-article {
-  position: relative;
-  header {
-    .topic:after {
-      content: " :";
-    }
-  }
-  .content {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    min-height: 70px;
-    font-size: 1.2em;
-    line-height: 1.5em;
-
-    &.hidden {
-      padding: 0;
-      min-height: 0;
-    }
-    > p:first-child {
-      margin-top: 0;
-    }
-    > p:last-child {
-      margin-bottom: 0;
-    }
-    pre {
-      font-size: 0.8rem;
-    }
-  }
-  .meta {
-    color: $C_INTER;
-  }
-  .edited_by {
-    cursor: pointer;
-  }
-  .score,
-  .datePourCss {
+html:not(#home) {
+  article,
+  ul.threads > li.comment,
+  .markdown_cheatsheet,
+  #contents > form,
+  form#new_post,
+  body#users-comments #contents > ul > li,
+  body#comments-create #contents > ul > li#comment_new,
+  body#comments-update #contents > ul > li#comment_new,
+  body#comments-show #contents > ul > li.comment,
+  body#wiki_pages-revision #contents,
+  body#news-revision #contents,
+  body#boards-show #contents,
+  body#stylesheets-edit #contents,
+  body#wiki_pages-changes #contents,
+  body#admin-index #container > ul {
     display: block;
-    width: $RAY_CONTAINER + $BORDER_CONTENT;
-    height: 31px;
-    margin: 0;
-    border-left-width: 15px;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    border-right-width: 0;
-    font-size: 1.3em;
-    /* the translation should be the exact sum of padding and margin of all elements to the right */
-    position: absolute;
-    right: -$RAY_CONTAINER - $BORDER_CONTENT;
-    box-sizing: content-box;
-    border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0
-      15;
-    border-style: solid;
-  }
-  .score {
-    background: $C_BAS_FOND;
-    text-align: center;
-    line-height: 31px;
-    font-weight: bold;
-    margin-top: 2px;
-    top: $fleche_offset_vertical + 20px;
-  }
-  .datePourCss {
-    background: $C_BANDEAU;
-    color: white;
-    padding: 0;
-    margin-bottom: 2px;
-    top: 20px;
-
-    .jour {
-      box-sizing: border-box;
-      padding-left: 2px;
-      float: left;
-      line-height: 31px;
-      font-weight: bold;
-      width: 45%;
-    }
-    .mois,
-    .annee {
-      text-align: left;
-      font-size: 0.64em;
-      float: right;
-      width: 55%;
-      height: 45%;
-    }
-    .mois {
-      padding-bottom: 2px;
-    }
-    .annee {
-      padding-top: 0;
-      vertical-align: top;
-    }
-  }
-  .image {
-    float: left;
-    margin: 10px;
-    margin-top: 10px;
-  }
-  .notice {
-    margin: 0 20px 10px 100px;
+    background: white;
+    padding: 10px $PX_PAD_NODE 10px $PX_PAD_NODE;
+    border-radius: $RAY_NODE;
+    border: solid $BORDER_CONTENT $C_INTER;
+    margin-bottom: 15px;
+    font-size: 0.8em;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: Merriweather, serif;
-    font-weight: normal;
-    a {
-      font-weight: normal;
+  body#news-revision #contents,
+  body#wiki_pages-changes #contents {
+    font-size: 1em;
+  }
+
+  article {
+    position: relative;
+    header {
+      .topic:after {
+        content: " :";
+      }
     }
-  }
-}
+    .content {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      min-height: 70px;
+      font-size: 1.2em;
+      line-height: 1.5em;
 
-/* ajout d'un caractère de couleur changeante devant "lire la suite" */
-.read,
-.no_comments,
-.new_comments,
-.not_read {
-  a:before {
-    content: "+ ";
-    font-weight: bold;
-  }
-}
-.new_comments,
-.not_read {
-  a:before {
-    color: $C_BANDEAU;
-  }
-}
-
-.read,
-.no_comments {
-  color: $C_INTER;
-}
-.new_comments a {
-  color: $C_INTER;
-}
-
-footer.actions {
-  font-size: 1em;
-  .action {
-    color: $C_INTER;
-    margin-right: 10px;
-  }
-  .action.download {
-    padding-left: 2em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    background: no-repeat 0px 0.2em / 1.6em white;
-    background-image: url("/images/icones/download.png");
-    background-image: url("/images/icones/download.svg"), none;
-  }
-  form,
-  form div {
-    display: inline;
-  }
-  .button_to {
-    float: none;
-    input {
-      padding: 0;
-      display: inline;
+      &.hidden {
+        padding: 0;
+        min-height: 0;
+      }
+      > p:first-child {
+        margin-top: 0;
+      }
+      > p:last-child {
+        margin-bottom: 0;
+      }
+      pre {
+        font-size: 0.8rem;
+      }
+    }
+    .meta {
       color: $C_INTER;
-      font-size: inherit;
-      font-weight: bold;
-      border-style: none;
-      background-color: transparent;
-      height: auto;
     }
-  }
-}
-
-.vote {
-  color: $C_INTER;
-  font-style: italic;
-  font-size: x-small;
-
-  form,
-  form div {
-    display: inline;
-  }
-  .button_to {
-    input {
-      padding: 0;
-      display: inline;
-      font-style: italic;
-      font-size: x-small;
-      color: $C_INTER;
-      border-style: none;
-      background-color: transparent;
+    .edited_by {
+      cursor: pointer;
     }
-  }
-  &.done {
-    display: none;
-  }
-}
-
-/* concerne tout ce qui est contenu : article, commentaire */
-.content {
-  text-align: justify;
-  hyphens: auto;
-  hyphenate-limit-chars: 6 3 2;
-  hyphenate-limit-lines: 2;
-  hyphenate-limit-last: always;
-  img,
-  svg {
-    display: block;
-    margin: 0 auto;
-  }
-  img.mathjax {
-    display: inline;
-    height: 1em;
-  }
-  a {
-    @include lien_standard;
-    border-bottom: 1px solid;
-    &[href^="http://fr.wikipedia.org/"]:after,
-    &[href^="http://en.wikipedia.org/"]:after,
-    &[href^="https://fr.wikipedia.org/"]:after,
-    &[href^="https://en.wikipedia.org/"]:after {
-      content: "\A0W";
-      font-family: serif;
-      font-size: 6pt;
-      vertical-align: super;
-      line-height: 0;
-    }
-    &[href^="/wiki"],
-    &[href^="//linuxfr.org/wiki"] {
-      padding-left: 3px;
-      border-left: 16px;
-      border-image: url("/favicon.png") 0 0 0 32;
+    .score,
+    .datePourCss {
+      display: block;
+      width: $RAY_CONTAINER + $BORDER_CONTENT;
+      height: 31px;
+      margin: 0;
+      border-left-width: 15px;
+      border-top-width: 0;
+      border-bottom-width: 0;
+      border-right-width: 0;
+      font-size: 1.3em;
+      /* the translation should be the exact sum of padding and margin of all elements to the right */
+      position: absolute;
+      right: -$RAY_CONTAINER - $BORDER_CONTENT;
+      box-sizing: content-box;
+      border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0
+        15;
       border-style: solid;
     }
+    .score {
+      background: $C_BAS_FOND;
+      text-align: center;
+      line-height: 31px;
+      font-weight: bold;
+      margin-top: 2px;
+      top: $fleche_offset_vertical + 20px;
+    }
+    .datePourCss {
+      background: $C_BANDEAU;
+      color: white;
+      padding: 0;
+      margin-bottom: 2px;
+      top: 20px;
+
+      .jour {
+        box-sizing: border-box;
+        padding-left: 2px;
+        float: left;
+        line-height: 31px;
+        font-weight: bold;
+        width: 45%;
+      }
+      .mois,
+      .annee {
+        text-align: left;
+        font-size: 0.64em;
+        float: right;
+        width: 55%;
+        height: 45%;
+      }
+      .mois {
+        padding-bottom: 2px;
+      }
+      .annee {
+        padding-top: 0;
+        vertical-align: top;
+      }
+    }
+    .image {
+      float: left;
+      margin: 10px;
+      margin-top: 10px;
+    }
+    .notice {
+      margin: 0 20px 10px 100px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: Merriweather, serif;
+      font-weight: normal;
+      a {
+        font-weight: normal;
+      }
+    }
   }
-  ul,
-  ol {
-    overflow: hidden;
-    padding-bottom: 1px;
-    text-align: left;
+
+  /* ajout d'un caractère de couleur changeante devant "lire la suite" */
+  .read,
+  .no_comments,
+  .new_comments,
+  .not_read {
+    a:before {
+      content: "+ ";
+      font-weight: bold;
+    }
   }
-  table {
-    table-layout: fixed;
-    width: 100%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+  .new_comments,
+  .not_read {
+    a:before {
+      color: $C_BANDEAU;
+    }
+  }
+
+  .read,
+  .no_comments {
+    color: $C_INTER;
+  }
+  .new_comments a {
+    color: $C_INTER;
+  }
+
+  footer.actions {
+    font-size: 1em;
+    .action {
+      color: $C_INTER;
+      margin-right: 10px;
+    }
+    .action.download {
+      padding-left: 2em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      background: no-repeat 0px 0.2em / 1.6em white;
+      background-image: url("/images/icones/download.png");
+      background-image: url("/images/icones/download.svg"), none;
+    }
+    form,
+    form div {
+      display: inline;
+    }
+    .button_to {
+      float: none;
+      input {
+        padding: 0;
+        display: inline;
+        color: $C_INTER;
+        font-size: inherit;
+        font-weight: bold;
+        border-style: none;
+        background-color: transparent;
+        height: auto;
+      }
+    }
+  }
+
+  .vote {
+    color: $C_INTER;
+    font-style: italic;
+    font-size: x-small;
+
+    form,
+    form div {
+      display: inline;
+    }
+    .button_to {
+      input {
+        padding: 0;
+        display: inline;
+        font-style: italic;
+        font-size: x-small;
+        color: $C_INTER;
+        border-style: none;
+        background-color: transparent;
+      }
+    }
+    &.done {
+      display: none;
+    }
+  }
+
+  /* concerne tout ce qui est contenu : article, commentaire */
+  .content {
+    text-align: justify;
+    hyphens: auto;
+    hyphenate-limit-chars: 6 3 2;
+    hyphenate-limit-lines: 2;
+    hyphenate-limit-last: always;
+    img,
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+    img.mathjax {
+      display: inline;
+      height: 1em;
+    }
+    a {
+      @include lien_standard;
+      border-bottom: 1px solid;
+      &[href^="http://fr.wikipedia.org/"]:after,
+      &[href^="http://en.wikipedia.org/"]:after,
+      &[href^="https://fr.wikipedia.org/"]:after,
+      &[href^="https://en.wikipedia.org/"]:after {
+        content: "\A0W";
+        font-family: serif;
+        font-size: 6pt;
+        vertical-align: super;
+        line-height: 0;
+      }
+      &[href^="/wiki"],
+      &[href^="//linuxfr.org/wiki"] {
+        padding-left: 3px;
+        border-left: 16px;
+        border-image: url("/favicon.png") 0 0 0 32;
+        border-style: solid;
+      }
+    }
+    ul,
+    ol {
+      overflow: hidden;
+      padding-bottom: 1px;
+      text-align: left;
+    }
+    table {
+      table-layout: fixed;
+      width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+  }
+}
+
+html#home {
+  article {
+    margin: 1rem 0;
+
+    &:not(:first-of-type) {
+      border-top: solid 2px $C_BAS_FOND;
+    }
+
+    > h1 {
+      color: $C_HOME_FOOTER;
+      font-size: 1.5rem;
+    }
+
+    footer {
+      font-size: 0.8rem;
+    }
   }
 }

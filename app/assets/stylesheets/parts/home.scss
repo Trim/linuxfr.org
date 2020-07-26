@@ -134,17 +134,21 @@ html#home {
         width: 22%;
       }
 
-      article h1 {
-        color: $C_HOME_FOOTER;
-        font-size: 1.2rem;
-      }
+      section {
+        &#banner {
+          margin: 1rem 0;
+          padding: 1rem 0;
+          border-top: solid 2px $C_BAS_FOND;
+          border-bottom: solid 2px $C_BAS_FOND;
+        }
 
-      section >h1 {
-        font-size: 1.2rem;
-        padding-bottom: 0.3rem;
-        background: no-repeat 0px 1.5rem / 3ex transparent;
-        background-image: url(/images/icones/underline_yellow.png);
-        background-image: url(/images/icones/underline_yellow.svg);
+        >h1 {
+          font-size: 1.2rem;
+          padding-bottom: 0.3rem;
+          background: no-repeat 0px 1.5rem / 3ex transparent;
+          background-image: url(/images/icones/underline_yellow.png);
+          background-image: url(/images/icones/underline_yellow.svg);
+        }
       }
 
       h1,
