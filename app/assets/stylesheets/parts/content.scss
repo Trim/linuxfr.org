@@ -130,19 +130,6 @@ html:not(#home) {
     .notice {
       margin: 0 20px 10px 100px;
     }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: Merriweather, serif;
-      font-weight: normal;
-      a {
-        font-weight: normal;
-      }
-    }
   }
 
   /* ajout d'un caractère de couleur changeante devant "lire la suite" */
@@ -227,56 +214,71 @@ html:not(#home) {
       display: none;
     }
   }
+}
 
-  /* concerne tout ce qui est contenu : article, commentaire */
-  .content {
-    text-align: justify;
-    hyphens: auto;
-    hyphenate-limit-chars: 6 3 2;
-    hyphenate-limit-lines: 2;
-    hyphenate-limit-last: always;
-    img,
-    svg {
-      display: block;
-      margin: 0 auto;
-    }
-    img.mathjax {
-      display: inline;
-      height: 1em;
-    }
+article {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Merriweather, serif;
+    font-weight: normal;
     a {
-      @include lien_standard;
-      border-bottom: 1px solid;
-      &[href^="http://fr.wikipedia.org/"]:after,
-      &[href^="http://en.wikipedia.org/"]:after,
-      &[href^="https://fr.wikipedia.org/"]:after,
-      &[href^="https://en.wikipedia.org/"]:after {
-        content: "\A0W";
-        font-family: serif;
-        font-size: 6pt;
-        vertical-align: super;
-        line-height: 0;
-      }
-      &[href^="/wiki"],
-      &[href^="//linuxfr.org/wiki"] {
-        padding-left: 3px;
-        border-left: 16px;
-        border-image: url("/favicon.png") 0 0 0 32;
-        border-style: solid;
-      }
+      font-weight: normal;
     }
-    ul,
-    ol {
-      overflow: hidden;
-      padding-bottom: 1px;
-      text-align: left;
+  }
+}
+
+/* concerne tout ce qui est contenu : article, commentaire */
+.content {
+  text-align: justify;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 2;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-last: always;
+  img,
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+  img.mathjax {
+    display: inline;
+    height: 1em;
+  }
+  a {
+    @include lien_standard;
+    border-bottom: 1px solid;
+    &[href^="http://fr.wikipedia.org/"]:after,
+    &[href^="http://en.wikipedia.org/"]:after,
+    &[href^="https://fr.wikipedia.org/"]:after,
+    &[href^="https://en.wikipedia.org/"]:after {
+      content: "\A0W";
+      font-family: serif;
+      font-size: 6pt;
+      vertical-align: super;
+      line-height: 0;
     }
-    table {
-      table-layout: fixed;
-      width: 100%;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+    &[href^="/wiki"],
+    &[href^="//linuxfr.org/wiki"] {
+      padding-left: 3px;
+      border-left: 16px;
+      border-image: url("/favicon.png") 0 0 0 32;
+      border-style: solid;
     }
+  }
+  ul,
+  ol {
+    overflow: hidden;
+    padding-bottom: 1px;
+    text-align: left;
+  }
+  table {
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 
