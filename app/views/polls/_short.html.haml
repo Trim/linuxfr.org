@@ -1,0 +1,27 @@
+= short_article_for poll do |c|
+  - c.title = link_to poll.title, poll
+  - c.meta = ''
+  - c.actions = ''
+  - c.body  = capture do
+    - if poll.explanations
+      .explanations= poll.explanations
+    - if (poll_current_or_archived(poll)) == 'archived'
+      %ul.poll.archived
+        = list_of poll.answers do |answer|
+          #{answer.formatted} :
+          .result(style="width: #{answer.percent}%;")
+            = answer.votes
+          (#{answer.percent} %)
+      %p.total_votes
+        Total :
+        = pluralize poll.total_votes, "vote"
+    - else
+      = form_tag "/sondages/#{poll.new_record? ? 0 : poll.to_param}/vote", id: "#{dom_id poll}" do
+        %ul.poll.current
+          - poll.answers.each_with_index do |answer,index|
+            %li
+              = radio_button_tag :position, answer.position, false, id: "position_#{index}}"
+              = label_tag "position_#{index}", answer.formatted
+        %div.center-content
+          = submit_tag "Voter", :class => "button dark center" if poll.published?
+          = link_to("Résultats", { controller: "polls", action: "show", id: poll.to_param, results: 1 }, { class: "button center" })

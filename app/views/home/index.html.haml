@@ -3,19 +3,19 @@
 		%h1
 			= link_to "Actualités", '/news', title: "Toutes les actualités"
 		= render :partial => 'news/short', :collection => @news.map(&:content), :as => :news
-		= link_to "Plus d'actualités", '/news', title: "Toutes les actualités", :class => "button center"
+		= link_to "Plus d'actualités", '/news', title: "Toutes les actualités", :class => "button center vertical-margin"
 	%section#banner
 		= @banner
 	%section
 		%h1
 			= link_to "Derniers billets de la communauté", '/journaux', title: "Tous les billets de la communauté"
 		= render :partial => 'diaries/short', :collection => @diaries.map(&:content), :as => :diary
-		= link_to "Plus de billets", '/journaux', title: "Tous les billets de la communauté", :class => "button center"
+		= link_to "Plus de billets", '/journaux', title: "Tous les billets de la communauté", :class => "button center vertical-margin"
 	%section
 		%h1 Faites vivre LinuxFr.org !
 		%p
 			Tous les articles sont le fruit du travail de la communauté. Grâce au système de rédaction coopérative du site, on peut s’aider les uns les autres. Pas besoin d’expertise pour participer !
-		%div.center-content
+		%div.center-content.vertical-margin
 			= link_to "Participez", '/redaction', title: "Participez à la rédaction des dépêches", :class => "button dark"
 			= link_to "En savoir plus", '/a-propos', :class => 'button'
 
@@ -23,18 +23,19 @@
 	%section
 		%h1
 			= link_to "Sur le forum", '/forums', title: "Questions‑réponses, petites annonces"
-		%p
-			blah blah blah
-	%section
-		%h1 Sondage
-		%p blah blah blah
+		%nav
+			= render :partial => 'posts/short', :collection => @posts.map(&:content), :as => :post
+	%section#polls
+		%h1
+			= link_to "Sondage", '/sondages', title: "Sondage"
+		= render :partial => 'polls/short', :collection => @polls.map(&:content), :as => :poll
 	%section
 		%h1
 			= link_to "Liens remarquables", '/liens', title: "Liens remarquables"
-		%p
-			blah
+		%nav
+			= render :partial => 'bookmarks/short', :collection => @bookmarks.map(&:content), :as => :bookmark
 	%section
 		%h1
 			= link_to "Sur le wiki", '/wiki', title: "Pages wiki"
-		%p
-			blah blah blah
+		%nav
+			= render :partial => 'wiki_pages/short', :collection => @wiki_pages.map(&:content), :as => :wiki_page

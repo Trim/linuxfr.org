@@ -90,7 +90,6 @@ html#home {
     .button {
       display: inline-block;
       text-align: center;
-      min-width: 20ex;
       padding: 0.7rem;
       border-radius: 1rem;
       color: $C_HOME_HEADER;
@@ -99,10 +98,6 @@ html#home {
       &.dark {
         color: white;
         background: $C_HOME_HEADER;
-      }
-
-      &.center {
-        width: 20ex;
       }
     }
 
@@ -116,6 +111,11 @@ html#home {
       justify-content: space-evenly;
     }
 
+    .vertical-margin {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
     #main-container {
       flex-grow: 1;
       align-self: center;
@@ -126,25 +126,52 @@ html#home {
       max-width: 115ex;
 
       main {
-        width: 75%;
+        width: 60%;
         margin-right: 10px;
+
+        section {
+
+          &:not(:first-of-type) {
+            margin-top: 2.5rem;
+          }
+
+          &#banner {
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: solid 2px $C_BAS_FOND;
+            border-bottom: solid 2px $C_BAS_FOND;
+          }
+        }
+
+        .button {
+          min-width: 20ex;
+
+          &.center {
+            width: 20ex;
+          }
+        }
       }
 
       aside {
-        width: 22%;
+        width: 28%;
+
+        section {
+          &:not(:first-of-type) {
+            margin-top: 4rem;
+          }
+
+          &#polls {
+            .button {
+              width: 40%;
+            }
+          }
+        }
       }
 
       section {
-        &#banner {
-          margin: 1rem 0;
-          padding: 1rem 0;
-          border-top: solid 2px $C_BAS_FOND;
-          border-bottom: solid 2px $C_BAS_FOND;
-        }
-
         >h1 {
-          font-size: 1.2rem;
-          padding-bottom: 0.3rem;
+          font-size: 1.1rem;
+          padding-bottom: 0.5rem;
           background: no-repeat 0px 1.5rem / 3ex transparent;
           background-image: url(/images/icones/underline_yellow.png);
           background-image: url(/images/icones/underline_yellow.svg);
