@@ -47,6 +47,7 @@ module NodeHelper
     score = [ [record.node.score / 5, -10].max, 10].min
     yield cp
     cp.meta ||= posted_by(record)
+    cp.body ||= record.truncated_body.sub("[...](suite)", " …").html_safe
     render 'nodes/short_content', cp.to_hash
   end
 

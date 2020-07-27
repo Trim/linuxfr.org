@@ -4,6 +4,5 @@ class HomeController < ApplicationController
     @news = Node.home_listing(News)
     @diaries = Node.home_listing(Diary)
     @banner = Banner.random
-    render :index, layout: 'home'
   end
 end

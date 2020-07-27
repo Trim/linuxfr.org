@@ -41,16 +41,10 @@ class Node < ActiveRecord::Base
   }
   scope :home_listing, ->(types) {
     types = types.to_s
-    if types == "News"
-      visible.where(content_type: types, id: $redis.get("nodes/ppp").to_i)
-        .or(visible.where(content_type: types))
-        .order("id = #{$redis.get("nodes/ppp")} DESC, created_at DESC")
-        .limit(5)
-    else
-      visible.where(content_type: types)
-        .order("created_at DESC")
-        .limit(5)
-    end
+    visible.where(content_type: types, id: $redis.get("nodes/ppp").to_i)
+      .or(visible.where(content_type: types))
+      .order("id = #{$redis.get("nodes/ppp")} DESC, created_at DESC")
+      .limit(5)
   }
 
   paginates_per 15

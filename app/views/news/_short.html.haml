@@ -1,5 +1,4 @@
-= short_article_for short do |c|
-  - c.title = link_to(short.title, short)
-  - c.meta  = news_posted_by(short)
-  - c.body  = capture do
-    = short.body
+= short_article_for news do |c|
+  - c.title = link_to(news.title, news)
+  - c.meta  = news_posted_by(news)
+  - c.body = news.body

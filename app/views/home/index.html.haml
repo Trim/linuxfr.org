@@ -2,14 +2,14 @@
 	%section
 		%h1
 			= link_to "Actualités", '/news', title: "Toutes les actualités"
-		= render :partial => 'news/short', :collection => @news.map(&:content)
+		= render :partial => 'news/short', :collection => @news.map(&:content), :as => :news
 		= link_to "Plus d'actualités", '/news', title: "Toutes les actualités", :class => "button center"
 	%section#banner
 		= @banner
 	%section
 		%h1
 			= link_to "Derniers billets de la communauté", '/journaux', title: "Tous les billets de la communauté"
-		= render :partial => 'diaries/short', :collection => @diaries.map(&:content)
+		= render :partial => 'diaries/short', :collection => @diaries.map(&:content), :as => :diary
 		= link_to "Plus de billets", '/journaux', title: "Tous les billets de la communauté", :class => "button center"
 	%section
 		%h1 Faites vivre LinuxFr.org !
