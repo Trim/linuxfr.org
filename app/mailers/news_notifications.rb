@@ -49,6 +49,11 @@ class NewsNotifications < ActionMailer::Base
     send_redaction_mail "Relance", news
   end
 
+  def erase_by_bot(news)
+    @news    = news
+    send_bot_mail "Dépêche supprimée automatiquement :", news
+  end
+
 protected
 
   def send_redaction_mail(subject, news)
@@ -56,6 +61,14 @@ protected
     mail from: EDITORS,
          to: EDITORS,
          bcc: news.attendees.map(&:account).compact.map(&:email),
+         subject: "[LinuxFr.org] #{subject} #{news.title}"
+  end
+
+  def send_bot_mail(subject, news)
+    @news = news
+    mail from: MODERATORS,
+         to: news.author_email,
+         cc: MODERATORS,
          subject: "[LinuxFr.org] #{subject} #{news.title}"
   end
 

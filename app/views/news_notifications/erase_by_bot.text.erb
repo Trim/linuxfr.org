@@ -1,0 +1,31 @@
+Bonjour,
+
+Ceci est un message automatique.
+
+Nous vous remercions pour votre proposition de dépêche, et vous
+encourageons à en proposer d’autres.
+
+La dépêche que vous avez proposée est restée très longtemps dans l’espace de
+rédaction collaboratif sans aucune modification alors qu’elle n’est pas
+terminée.
+
+Considérant ce contenu abandonné, et pour conserver un certain dynamisme
+dans l’espace de rédaction collaboratif, le bot LinuxFr le supprime
+automatiquement.
+
+Rien ne vous empêche de le proposer à nouveau si besoin.
+
+Pour rappel, le contenu de la dépêche est copié ci‑dessous :
+
+<%= @news.wiki_body %>
+
+<%- @news.links.each do |link| %>
+* <%= link.title %> - <%= link.url %>
+<%- end -%>
+
+<%= @news.wiki_second_part %>
+
+Cordialement,
+
+-- 
+Le bot LinuxFr

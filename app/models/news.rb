@@ -50,6 +50,8 @@ class News < Content
 
   scope :sorted,    -> { order(updated_at: :desc) }
   scope :draft,     -> { where(state: "draft").includes(node: :user) }
+  scope :draft_to_followup, -> { where(state: "draft").where("DATE(updated_at) = ?",  Date.today - 5.month - 2.week).includes(node: :user) }
+  scope :draft_to_refuse, -> { where(state: "draft").where("DATE(updated_at) < ?", Date.today - 6.month).includes(node: :user) }
   scope :candidate, -> { where(state: "candidate") }
   scope :refused,   -> { where(state: "refused") }
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
