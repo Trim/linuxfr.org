@@ -29,6 +29,9 @@
   = link_to "Étiquettes publiques", moderation_tags_path
 
 %h2
+  = link_to "Derniers commentaires", moderation_comments_path
+
+%h2
   = link_to "Sondages", moderation_polls_path
 - if @polls.empty?
   %p Aucune proposition

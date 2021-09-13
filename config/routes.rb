@@ -171,6 +171,7 @@ Rails.application.routes.draw do
     resources :block, only: [:create]
     resources :images, only: [:index, :destroy]
     resources :tags, only: [:index]
+    resources :comments, only: [:index]
   end
 
   # Admin
