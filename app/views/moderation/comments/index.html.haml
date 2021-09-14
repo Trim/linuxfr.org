@@ -1,6 +1,5 @@
-%main#contents(role="main")
-  =h1 "Les derniers commentaires"
-  %ul.comments_list
-    - @comments.each do |comment|
-      %li.comment(id="comment-#{comment.id}")
-        = render comment
+= paginated_section(@comments, link=nil) do
+  %main#comments(role="main")
+    = h1 "Les derniers commentaires"
+    - feed "Flux Atom des derniers commentaires"
+    = render(@comments)

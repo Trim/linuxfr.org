@@ -3,6 +3,8 @@ class Moderation::CommentsController < ModerationController
   respond_to :html
 
   def index
-    @comments = Comment.moderation
+    @comments = Comment.latest.
+      page(params[:page]).
+      order(created_at: :desc)
   end
 end
