@@ -82,6 +82,11 @@ class Account < ActiveRecord::Base
 
   validates :stylesheet, length: { maximum: 255, message: "L’adresse de la feuille de style est trop longue" }
 
+  before_validation :normalize_login
+  def normalize_login
+    self.login = Sanitizer.visual_normalize(login)
+  end
+
 ### Authentication ###
 
   devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable
