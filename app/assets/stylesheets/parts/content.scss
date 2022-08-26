@@ -60,6 +60,18 @@ article {
   }
   .meta {
     color: $C_INTER;
+    .posted_by_detailsblock {
+      margin-bottom: 0.5rem;
+      summary {
+        text-decoration: underline dotted;
+        cursor: help;
+      }
+    }
+    .posted_by_informations {
+      margin: 0.5rem;
+      padding: 0.2rem;
+      border-left: $C_INTER solid 0.1rem;
+    }
   }
   .edited_by {
     cursor: pointer;

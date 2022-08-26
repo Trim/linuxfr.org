@@ -32,7 +32,7 @@ module NodeHelper
     cp.css_class << 'ppp' if record.node.on_ppp?
     cp.css_class << "preview" if @preview_mode
     yield cp
-    cp.meta ||= posted_by(record)
+    cp.meta ||= posted_by(record, ContentPresenter.collection?)
     cp.tags ||= tags_for(record.node)
     cp.body ||= (ContentPresenter.collection? ?
                  record.truncated_body.sub("[...](suite)", " " + link_to("(…)", path_for_content(record))).html_safe :
@@ -92,12 +92,15 @@ module NodeHelper
     content_tag(:div, date_time.year, class: "annee")
   end
 
-  def posted_by(content, user_link='Anonyme')
+  def posted_by(content, is_index, user_link='Anonyme')
     user   = content.user
     user ||= current_user if content.new_record?
     if user
       user_link  = link_to(user.name, "/users/#{user.cached_slug}", rel: 'author')
       user_infos = []
+      if user.account
+        user_infos << user.account.login if user.account.login != user.name
+      end
       user_infos << homesite_link(user)
       user_infos << jabber_link(user)
       user_infos.compact!
@@ -110,6 +113,9 @@ module NodeHelper
     published_at = content_tag(:time, date + " " + time, datetime: date_time.iso8601, class: "updated")
     caption      = content_tag(:span, "", class: "floating_spacer") +
                    content_tag(:span, "Posté par #{ user_link } #{ published_at }.".html_safe, class: "posted_by_spanblock")
+    if content.node.cc_licensed?
+      caption = caption + " Licence " + link_to("CC BY‑SA.", cc_url(content.node), rel: 'license')
+    end
     caption.html_safe
   end
 

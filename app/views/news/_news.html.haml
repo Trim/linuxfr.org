@@ -1,6 +1,6 @@
 = article_for news do |c|
   - c.title = link_to(news.title, news)
-  - c.meta  = news_posted_by(news)
+  - c.meta  = news_posted_by(news, not(defined?(with_second_part) && with_second_part))
   - c.image = link_to(image_tag(news.section.image, alt: news.section.title, title: news.section.title), news.section)
   - if current_account && current_account.can_update?(news)
     - c.actions = link_to("Modifier", [:moderation, news], class: 'action')

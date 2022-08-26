@@ -3,8 +3,6 @@
     %h1(itemprop="name" class="entry-title")= title
     .meta
       = meta
-      - if record.node.cc_licensed?
-        = link_to "Licence CC By‑SA.", cc_url(record), rel: 'license'
       - unless hidden
         %div.tags
           Étiquettes :
