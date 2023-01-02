@@ -1,6 +1,5 @@
-- content_for :column do
-  = render 'recent'
-  = render 'nodes'
+= render 'user', user: @user, nodes: @nodes
+= render 'nodes'
 
 %main#contents(role="main")
   =h1 "#{@user.name} a écrit #{pluralize @comments.total_count, "commentaire"}"

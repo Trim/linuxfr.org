@@ -1,6 +1,4 @@
-- content_for :column do
-  = render 'recent'
-  = render 'nodes'
+= render 'nodes', content_type: "dépêche"
 
 =h1 "#{@user.name} a écrit #{pluralize @nodes.total_count, "dépêche"}"
 - feed "Flux Atom des dépêches de #{@user.name}"

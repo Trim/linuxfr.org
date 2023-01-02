@@ -31,7 +31,7 @@ module UsersHelper
     return unless karma > 0
     attrs = {}
     attrs[:rel] = "nofollow" unless user.account.try(:karma).to_i > Account.default_karma
-    link_to("site Web personnel", user.homesite, attrs)
+    link_to(user.homesite, user.homesite, attrs)
   end
 
   def jabber_link(user)

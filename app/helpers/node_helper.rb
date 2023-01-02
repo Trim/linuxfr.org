@@ -108,12 +108,6 @@ module NodeHelper
     user ||= current_user if content.new_record?
     if user
       user_link  = link_to(user.name, "/users/#{user.cached_slug}", rel: 'author')
-      user_infos = []
-      user_infos << homesite_link(user)
-      user_infos << jabber_link(user)
-      user_infos << mastodon_link(user)
-      user_infos.compact!
-      user_link += (" (" + user_infos.join(', ') + ")").html_safe  if user_infos.any?
     end
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now

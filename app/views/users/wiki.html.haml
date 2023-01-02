@@ -1,6 +1,4 @@
-- content_for :column do
-  = render 'recent'
-  = render 'nodes'
+= render 'nodes', content_type: "édition de wiki"
 
 %main#contents(role="main")
   =h1 "Les participations de #{@user.name} au wiki"

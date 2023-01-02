@@ -1,10 +1,68 @@
-- content_for :column do
-  = render 'recent'
-  = render 'nodes'
-
-=h1 "#{@user.name} a écrit #{pluralize @nodes.total_count, "contenu"} de type dépêche ou journal"
 - feed "Flux Atom de #{@user.name}", "/users/#{@user.to_param}.atom"
 - if @user.mastodon_url.present? and @user.account.try(:karma).to_i > 0
   - link "me", @user.mastodon_url
 - filter_pagination_params ['id', 'order', 'page']
 = paginated_nodes @nodes
+
+= render 'user', user: @user, node: @nodes
+
+- if @user.account && @user.account.viewable_by?(current_account)
+  %article{class: 'content', style: 'display:grid;grid-template-columns: 1fr 1fr;'}
+    - a = @user.account
+    %div
+      %h2 Données du compte
+      %ul
+        %li Courriel : #{a.email}
+        %li Rôle : #{a.display_role(@user.nodes.where(public: true).count>0)}
+        %li Dernière connexion : #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
+        %li Dernière action : #{a.updated_at ? l(@user.account.updated_at) : "-"}
+        %li Karma : #{a.karma} (minimum : #{a.min_karma}, maximum : #{a.max_karma})
+      - if current_account.admin?
+        %h2 Visibilité
+        %ul
+          - if @user.comments.count > 0
+            %li commentaires : #{ @user.comments.published.count } sur #{ @user.comments.count } ;
+          - else
+            %li pas de commentaires ;
+          - if @user.nodes.count > 0
+            %li contenus : #{ @user.nodes.visible.count } sur #{ @user.nodes.count } ;
+          - else
+            %li pas de contenus ;
+          - if @user.tags.count > 0
+            %li étiquettes : #{ @user.tags.visible.count } sur #{ @user.tags.count }.
+          - else
+            %li pas d'étiquettes.
+
+        %p Étiquetages : #{ @user.taggings.count }
+        = button_to "+50 XP", karma_admin_account_path(@user.account.id)
+    %div
+      - if current_account.can_block? or  current_account.can_plonk?
+        %h2 Modération
+      - if current_account.can_block?
+        %button.more.block Interdire de commenter
+        .more_actions.block(style="display: none;")
+          %ul
+            %li= button_to "24 h", moderation_block_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "block"
+            %li= button_to "48 h", moderation_block_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "block"
+            %li= button_to "une semaine", moderation_block_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "block"
+            %li= button_to "un mois", moderation_block_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "block"
+      - if current_account.can_plonk?
+        %button.more.plonk Interdire de tribune
+        .more_actions.plonk(style="display: none;")
+          %ul
+            %li= button_to "24 heures", moderation_plonk_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "plonk"
+            %li= button_to "48 heures", moderation_plonk_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "plonk"
+            %li= button_to "une semaine", moderation_plonk_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "plonk"
+            %li= button_to "un mois", moderation_plonk_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "plonk"
+        - if @user.account.logs.any?
+          %h2.history Historique
+          %ul.history
+            = list_of(@user.account.logs) do |log|
+              %p
+                %span.date
+                  #{l log.created_at}
+                %span.name
+                  #{log.user.try :name}
+              %p
+                #{log.description}
+>>>>>>> 9d435413 (draft: user contact information inside user page)

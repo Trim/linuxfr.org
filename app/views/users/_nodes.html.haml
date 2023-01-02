@@ -1,7 +1,4 @@
-#user_recent_nodes.box
-  %h1 Derniers contenus
-  %ul
-    - @contents.each do |node|
-      %li{class: node.content_type}
-        %span.content_type= translate_content_type node.content_type
-        = link_to_content node.content
+%div{style: 'display:grid;grid-template-columns: 1fr 1fr;'}
+  %h2{style: 'grid-column: 1/3'}
+    #{@user.name} a écrit #{pluralize @nodes.total_count, content_type}
+
