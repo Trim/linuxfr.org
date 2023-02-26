@@ -1,8 +1,6 @@
 - feed "Flux Atom de #{@user.name}", "/users/#{@user.to_param}.atom"
 - if @user.mastodon_url.present? and @user.account.try(:karma).to_i > 0
   - link "me", @user.mastodon_url
-- filter_pagination_params ['id', 'order', 'page']
-= paginated_nodes @nodes
 
 = render 'user', user: @user, node: @nodes
 
@@ -65,4 +63,3 @@
                   #{log.user.try :name}
               %p
                 #{log.description}
->>>>>>> 9d435413 (draft: user contact information inside user page)

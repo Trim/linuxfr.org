@@ -1,43 +1,36 @@
-%article{class: 'content vcard', style: 'display:grid;column-gap: 2rem; grid-template-columns: auto 1fr;padding: 2rem'}
+%article{class: 'content vcard', style: 'display:grid;column-gap: 2rem; grid-template-columns: 1fr 6fr;padding: 2rem'}
   %div{style: 'align-self: center;'}
     = avatar_img(user)
-  %div
-    %h3{style: 'margin-top: 0'} #{user.name}
-    %p Compte créé le #{l user.created_at.to_date}
+  %div{style: 'display:grid; column-gap: 1rem; row-gap: 0.7rem; grid-template-columns: auto 1fr;'}
+    %h3{style: 'margin-top: 0; grid-column-start: 1; grid-column-end: 3;'} #{user.name}
+    %span Compte créé le :
+    %span #{l user.created_at.to_date}
     - unless user.account && user.account.active_for_authentication?
-      %p Compte fermé
-    %table{style: 'width:auto'}
-      - if user.homesite.present?
-        %tr
-          %td Site Web personnel :
-          %td #{homesite_link(user)}
-      - if current_account && user.jabber_id.present?
-        %tr
-          %td Adresse XMPP :
-          %td #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, class: 'url'}
-      - if current_account && user.mastodon_url.present?
-        %p
-          Adresse Mastodon : #{link_to 'Mastodon', user.mastodon_url, class: 'url'}
-      %tr
-        %td Flux Atom :
-        %td #{link_to "dépêches et journaux", "/users/#{@user.to_param}.atom"}
+      %span{style: 'grid-column-start: 1; grid-column-end: 3;'} Compte fermé
+    - if user.homesite.present?
+      %span Site Web personnel :
+      %span #{homesite_link(user)}
+    - if current_account && user.jabber_id.present?
+      %span Adresse XMPP :
+      %span #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, class: 'url'}
+    - if current_account && user.mastodon_url.present?
+      %span Compte Mastodon :
+      %span #{link_to 'Mastodon', user.mastodon_url, class: 'url'}
+    %span Flux Atom :
+    %span #{link_to "dépêches et journaux", "/users/#{@user.to_param}.atom"}
 
-  - if defined? node
-    %div{style: 'grid-column: 2'}
-      %div
-        %h3 Contenus par type
-        %ul{style: 'display:grid;row-gap: 0.7rem; grid-template-columns: repeat(3, 1fr);'}
-          %li= link_to "dépêches", news_user_path(@user)
-          %li= link_to "journaux", journaux_user_path(@user)
-          %li= link_to "liens", liens_user_path(@user)
-          %li= link_to "messages sur les forums", posts_user_path(@user)
-          %li= link_to "entrées du suivi", suivi_user_path(@user)
-          %li= link_to "ajouts au wiki", wiki_user_path(@user)
-          %li= link_to "commentaires", comments_user_path(@user), rel: "nofollow"
-      %div
-        %h3 Contenus récents
-        %ul{style: 'display:grid;row-gap: 0.7rem; grid-template-columns: 1fr;'}
-          - @contents.limit(10).each do |node|
-            %li{class: node.content_type}
-              %span.content_type= translate_content_type node.content_type
-              = link_to_content node.content
+- if defined? node
+  %article{style: 'display:grid;column-gap: 2rem; row-gap: 0.7rem; grid-template-columns: auto auto;padding: 2rem'}
+    %h3{style: 'grid-column-start:1; grid-column-end: 3;'} Contenus par type
+    = link_to "dépêches", news_user_path(@user)
+    = link_to "journaux", journaux_user_path(@user)
+    = link_to "liens", liens_user_path(@user)
+    = link_to "messages sur les forums", posts_user_path(@user)
+    = link_to "entrées du suivi", suivi_user_path(@user)
+    = link_to "ajouts au wiki", wiki_user_path(@user)
+    = link_to "commentaires", comments_user_path(@user), rel: "nofollow"
+    %h3{style: 'grid-column-start:1; grid-column-end: 3;'} Contenus récents
+    - @contents.limit(10).each do |node|
+      %span.content_type
+        = translate_content_type node.content_type
+        = link_to_content node.content
