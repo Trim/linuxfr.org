@@ -84,7 +84,7 @@ class Account < ActiveRecord::Base
 
 ### Authentication ###
 
-  devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable
+  devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :timeoutable
 
   before_create :create_user
   def create_user

@@ -8,6 +8,6 @@
     = f.password_field :password, id: "account_password#{id_suffix}", required: "required", placeholder: "Mot de passe", size: 20
   %p
     = f.check_box :remember_me, id: "account_remember_me#{id_suffix}"
-    = f.label "remember_me#{id_suffix}", "Connexion automatique"
+    = f.label "remember_me#{id_suffix}", "Rester connecté (#{distance_of_time_in_words(0, Account.remember_for)})"
   %p
     = f.submit "Se connecter", id: "account_submit#{id_suffix}"
