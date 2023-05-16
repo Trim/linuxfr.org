@@ -4,6 +4,9 @@ LinuxFr on OCI Containers
 To simplify set up of a developement environment, LinuxFr.org can be
 run on Docker with `docker-compose up` or on Podman with `podman-compose up`.
 
+For Docker users, you need to enable the `BuildKit` image builder:
+https://docs.docker.com/build/buildkit/#getting-started
+
 To init the SQL database schema, you need to wait upto the `database`
 container to be ready to listen MySQL connections.
 
