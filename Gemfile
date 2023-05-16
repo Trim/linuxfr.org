@@ -68,8 +68,8 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", ">= 2.15"
-  gem "selenium-webdriver"
+  gem "capybara", "3.15" # last minor version compatible with ruby 2.3
+  gem "selenium-webdriver", "~>3" # compatible with ruby 2.3
 end
 
 group :production, :alpha do
