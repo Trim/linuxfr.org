@@ -1,0 +1,61 @@
+FROM docker.io/debian:buster-slim
+
+LABEL org.opencontainers.image.title="LinuxFr.org website"
+LABEL org.opencontainers.image.description="Run LinuxFr.org Ruby on Rails website"
+LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/linuxfr.org"
+LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Container.md"
+LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
+LABEL org.opencontainers.image.version="buster:1.0"
+LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
+
+WORKDIR /linuxfr.org
+
+ARG UID=1200
+
+RUN \
+  # Install system dependencies \
+  echo "deb http://deb.debian.org/debian/ buster-backports main" >> /etc/apt/sources.list.d/backports.list \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends \
+    mariadb-client libmariadb++-dev git \
+    build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
+    zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
+    ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
+    hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
+    nodejs \
+  && apt-get install -y --no-install-recommends -t buster-backports \
+    npm \
+  && gem install bundler -v 1.17.3 \
+  && apt-get clean \
+  # Create linuxfr.org user \
+  && useradd --uid ${UID} --create-home linuxfr.org \
+  && chown ${UID}:0 /linuxfr.org \
+  && chmod 770  /linuxfr.org
+
+USER ${UID}
+ENV HOME /home/linuxfr.org
+
+# Install node external dependencies
+COPY --chown=${UID}:0 --chmod=770 package*.json ./
+RUN npm ci
+
+# Install external dependencies
+COPY --chown=${UID}:0 --chmod=770 Gemfile* ./
+
+# To create container only use the Gemfile.lock (with --deployment flag)
+# So container state is same for all new developpers
+# To update the Gemfile.lock itself use `docker-compose run linuxfr.org bundle install`
+RUN bundle config --global path 'vendor/bundle' \
+  && bundle install --deployment
+
+# Configure the application
+COPY --chown=${UID}:0 --chmod=770 deployment/linuxfr.org/database.yml config/database.yml
+COPY --chown=${UID}:0 --chmod=770 config/secrets.yml.sample config/secrets.yml
+
+# Bundle source code
+COPY --chown=${UID}:0 --chmod=770 . /linuxfr.org
+
+EXPOSE 3000
+
+CMD ["bin/rails", "server", "--binding", "0.0.0.0"]
+

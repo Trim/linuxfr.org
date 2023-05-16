@@ -1,8 +1,8 @@
-LinuxFr on Docker
------------------
+LinuxFr on OCI Containers
+=========================
 
 To simplify set up of a developement environment, LinuxFr.org can be
-run on Docker with `docker-compose up`.
+run on Docker with `docker-compose up` or on Podman with `podman-compose up`.
 
 To init the SQL database schema, you need to wait upto the `database`
 container to be ready to listen MySQL connections.
@@ -19,15 +19,34 @@ Then, open a second terminal and run:
 docker-compose run linuxfr.org bin/rails db:setup
 ```
 
-Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
-in your favorite browser.
-
-Note: to be able to access this URL, you'll need to add the following line
-into the `/etc/hosts` file of your machine:
+Update your `/etc/hosts` file of your machine to create domain names `dlfp.lo`
+and `image.dlfp.lo`:
 
 ```
 127.0.0.1 dlfp.lo image.dlfp.lo
 ```
+
+Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
+in your favorite browser.
+
+Running containers in rootless mode
+===================================
+
+LinuxFr code assumes to run on TCP port `80` or `443` and it's not configurable
+currently. Thus if you run containers in rootless mode you will need to allow
+unprivileged users to use port `80`.
+
+By default, Linux kernel enforces blocks unprivileged users to use port numbers
+below `1024`.
+
+You can change this temporarly with:
+
+```sh
+sudo sysctl net.ipv4.ip_unprivileged_port_start=80
+```
+
+To set it permanently, you can add the line `net.ipv4.ip_unprivileged_port_start=80`
+into the `/etc/sysctl.conf` file.
 
 Personalize configuration
 =========================

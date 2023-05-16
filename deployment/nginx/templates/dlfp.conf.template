@@ -15,19 +15,33 @@ server {
   }
 
   location /img/ {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Port $server_port;
+
     proxy_pass http://linuxfr-img:8000;
   }
 
   location /b/ {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Port $server_port;
+
     proxy_buffering off;
     proxy_pass http://linuxfr-board:9000;
   }
 
   location / { 
-    proxy_set_header X_FORWARDED_PROTO $scheme;
-    proxy_set_header X-Real-Ip $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Port $server_port;
+
     proxy_redirect off;
     proxy_pass http://linuxfr.org:3000;
   }
