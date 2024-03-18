@@ -49,7 +49,9 @@ services:
       - ./public/fonts:/var/linuxfr/fonts:Z
       - data-uploads:/var/linuxfr/uploads
     ports:
-      - "80:80"
+      - target: 80
+        published: 127.0.0.1:80
+        protocol: tcp
     depends_on:
       - linuxfr.org
       - linuxfr-board
@@ -61,7 +63,9 @@ services:
     env_file:
       - deployment/default.env
     ports:
-      - "3306:3306"
+      - target: 3306
+        published: 127.0.0.1:3306
+        protocol: tcp
     volumes:
       - data-database:/var/lib/mysql
 
