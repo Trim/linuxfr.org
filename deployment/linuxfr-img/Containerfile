@@ -10,10 +10,13 @@ LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-    golang git ca-certificates \
-  && apt-get clean
+RUN \
+  set -eux; \
+  IFS=$'\n\t'; \
+  apt-get update; \
+  apt-get install -y --no-install-recommends \
+    golang git ca-certificates; \
+  apt-get clean;
 
 USER ${UID}
 ENV GOPATH=/linuxfr-img
