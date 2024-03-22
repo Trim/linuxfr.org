@@ -18,25 +18,39 @@ services:
       - data-uploads:/linuxfr.org/uploads
     tmpfs:
       - /linuxfr.org/public/tmp:size=100M
+    healthcheck:
+      test: curl --fail http://localhost:3000
     depends_on:
-      - database
-      - redis
+      database:
+        condition: service_completed_successfully
+        restart: true
+      redis:
+        condition: service_completed_successfully
+        restart: true
 
   linuxfr-board:
     build:
       context: deployment/linuxfr-board
     env_file:
       - deployment/default.env
+    healthcheck:
+      test: curl --fail -I http://localhost:9000
     depends_on:
-      - redis
+      redis:
+        condition: service_completed_successfully
+        restart: true
 
   linuxfr-img:
     build:
       context: deployment/linuxfr-img
     env_file:
       - deployment/default.env
+    healthcheck:
+      test: curl --fail http://localhost:8000/status
     depends_on:
-      - redis
+      redis:
+        condition: service_completed_successfully
+        restart: true
     volumes:
       - cache-img:/linuxfr-img/cache
 
@@ -53,9 +67,15 @@ services:
         published: 127.0.0.1:80
         protocol: tcp
     depends_on:
-      - linuxfr.org
-      - linuxfr-board
-      - linuxfr-img
+      linuxfr.org:
+        condition: service_completed_successfully
+        restart: true
+      linuxfr-board:
+        condition: service_completed_successfully
+        restart: true
+      linuxfr-img:
+        condition: service_completed_successfully
+        restart: true
 
   database:
     build:
@@ -66,11 +86,15 @@ services:
       - target: 3306
         published: 127.0.0.1:3306
         protocol: tcp
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     volumes:
       - data-database:/var/lib/mysql
 
   redis:
     image: docker.io/redis:5
+    healthcheck:
+      test: redis-cli --raw incr ping
     volumes:
       - data-redis:/data
 

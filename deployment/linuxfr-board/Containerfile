@@ -16,8 +16,10 @@ RUN \
   IFS=$'\n\t'; \
   apt-get update; \
   # Install dependencies \
+  # and add curl to be used by the healthcheck defined in compose.yaml \
   apt-get install -y --no-install-recommends \
-    build-essential git ruby ruby-dev; \
+    build-essential git ruby ruby-dev \
+    curl; \
   apt-get clean;
 
 USER ${UID}

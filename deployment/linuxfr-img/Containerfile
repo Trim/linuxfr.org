@@ -31,6 +31,15 @@ FROM docker.io/debian:bullseye-slim as deploy
 USER ${UID}
 WORKDIR /linuxfr-img
 
+# Install curl to be used by the healthcheck defined in compose.yaml
+RUN \
+  set -eux; \
+  IFS=$'\n\t'; \
+  apt-get update; \
+  apt-get install -y --no-install-recommends \
+    curl; \
+  apt-get clean;
+
 COPY --from=build --chown=${UID}:0 --chmod=770 /linuxfr-img/bin/img-LinuxFr.org .
 
 EXPOSE 8000
