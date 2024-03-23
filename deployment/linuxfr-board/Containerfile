@@ -26,12 +26,12 @@ USER ${UID}
 WORKDIR /linuxfr-board
 ENV HOME=/linuxfr-board
 
-# Install board-linuxfr
+# Install board-sse-linuxfr.org
 RUN gem install board-sse-linuxfr.org -v '~> 1.0.0'
 
 # Clean development dependencies
 USER 0
-RUN apt purge --autoremove -y build-essential git ruby-dev
+RUN apt purge --autoremove -y build-essential ruby-dev
 
 USER ${UID}
 EXPOSE 9000

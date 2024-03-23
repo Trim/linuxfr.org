@@ -33,7 +33,7 @@ For example, you should see in the logs:
 Then, open a second terminal and run:
 
 ```
-docker compose run linuxfr.org bin/rails db:setup
+docker compose exec linuxfr.org bin/rails db:setup
 ```
 
 Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
